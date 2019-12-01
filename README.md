@@ -11,7 +11,7 @@ python OpenNMT-py/preprocess.py -train_src dataset/biased_unbiased/biased_src_tr
 # Training Step
 
 ```shell
-python OpenNMT-py/train.py -data preprocessed_data/neutral/ -save_model models/neutral/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "neutral_log"
+python OpenNMT-py/train.py -data preprocessed_data/neutral/ -save_model ~/models/neutral/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 300000 --log_file "neutral_log" --tensorboard --tensorboard_log_dir="./pretrain_logs/" --batch_size 16 --valid_steps 23500 --save_checkpoint_steps 11750
 ```
 
 ```shell

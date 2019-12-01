@@ -15,5 +15,5 @@ python OpenNMT-py/train.py -data preprocessed_data/neutral/ -save_model models/n
 ```
 
 ```shell
-python OpenNMT-py/train.py -data preprocessed_data/biased_unbiased/ -save_model ~/models/biased_unbiased/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "biased_unbiased_log" --tensorboard --tensorboard_log_dir="./train_logs/" --save_checkpoint_steps 2500 --valid_steps 2500 --batch_size 16
+python OpenNMT-py/train.py -data preprocessed_data/biased_unbiased/ -save_model ~/models/biased_unbiased/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "biased_unbiased_log" --tensorboard --tensorboard_log_dir="./train_logs/" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16
 ```

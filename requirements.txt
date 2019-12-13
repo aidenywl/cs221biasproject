@@ -27,7 +27,7 @@ Keras-Applications==1.0.8
 Keras-Preprocessing==1.1.0
 Markdown==3.1.1
 MarkupSafe==1.1.1
-marshmallow==2.6.1
+marshmallow==2.15.1
 marshmallow-jsonapi==0.15.1
 numpy==1.18.0rc1
 oauthlib==3.1.0

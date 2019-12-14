@@ -42,6 +42,10 @@ spm_encode --model=final_bpe_32000/bpe32000.model --output_format=piece < biased
 
 spm_encode --model=final_bpe_32000/bpe32000.model --output_format=piece < biased_nmt/dev.unbiased > final_bpe_32000/dev.unbiased
 
+spm_encode --model=dataset/final_bpe_32000/bpe32000.model --output_format=piece < dataset/biased_nmt/test.biased > dataset/final_bpe_32000/test.biased
+
+spm_encode --model=dataset/final_bpe_32000/bpe32000.model --output_format=piece < dataset/biased_nmt/test.unbiased > dataset/final_bpe_32000/test.unbiased
+
 python OpenNMT-py/preprocess.py -train_src dataset/final_bpe_32000/train.biased -train_tgt dataset/final_bpe_32000/train.unbiased -valid_src dataset/final_bpe_32000/dev.biased -valid_tgt dataset/final_bpe_32000/dev.unbiased -save_data preprocessed_data/final_bpe_32000/ --src_vocab dataset/final_bpe_32000/bpe32000.vocab --tgt_vocab dataset/final_bpe_32000/bpe32000.vocab --share_vocab
 
 python OpenNMT-py/train.py -data preprocessed_data/final_bpe_32000/ -save_model ~/models/final_bpe_32000/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/final_bpe_32000" --tensorboard --tensorboard_log_dir="./train_logs/" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed -1
@@ -55,6 +59,10 @@ spm_encode --model=final_bpe_64000/bpe64000.model --output_format=piece < biased
 spm_encode --model=final_bpe_64000/bpe64000.model --output_format=piece < biased_nmt/dev.biased > final_bpe_64000/dev.biased
 
 spm_encode --model=final_bpe_64000/bpe64000.model --output_format=piece < biased_nmt/dev.unbiased > final_bpe_64000/dev.unbiased
+
+spm_encode --model=dataset/final_bpe_64000/bpe64000.model --output_format=piece < dataset/biased_nmt/test.biased > dataset/final_bpe_64000/test.biased
+
+spm_encode --model=dataset/final_bpe_64000/bpe64000.model --output_format=piece < dataset/biased_nmt/test.unbiased > dataset/final_bpe_64000/test.unbiased
 
 python OpenNMT-py/preprocess.py -train_src dataset/final_bpe_64000/train.biased -train_tgt dataset/final_bpe_64000/train.unbiased -valid_src dataset/final_bpe_64000/dev.biased -valid_tgt dataset/final_bpe_64000/dev.unbiased -save_data preprocessed_data/final_bpe_64000/ --src_vocab dataset/final_bpe_64000/bpe64000.vocab --tgt_vocab dataset/final_bpe_64000/bpe64000.vocab --share_vocab
 
@@ -110,10 +118,118 @@ python OpenNMT-py/train.py -data preprocessed_data/standard_32000/ -save_model ~
 python OpenNMT-py/train.py -data preprocessed_data/standard_64000/ -save_model ~/models/standard_64000_brnn_42/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/standard_64000_brnn_42" --tensorboard --tensorboard_log_dir="./train_logs/standard_64000_brnn_42" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed 42 --encoder_type brnn
 ```
 
+```shell
 # 32000 BPE
 
-python OpenNMT-py/train.py -data preprocessed_data/final_bpe_32000/ -save_model ~/models/final_bpe_32000_brnn_42/ -world_size 2 -gpu_ranks 1 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/final_bpe_32000_brnn_42" --tensorboard --tensorboard_log_dir="./train_logs/final_bpe_32000_brnn_42" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed 42 --encoder_type brnn
+python OpenNMT-py/train.py -data preprocessed_data/final_bpe_32000/ -save_model ~/models/final_bpe_32000_brnn_42/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/final_bpe_32000_brnn_42" --tensorboard --tensorboard_log_dir="./train_logs/final_bpe_32000_brnn_42" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed 42 --encoder_type brnn
 
 # 64000 BPE
 
 python OpenNMT-py/train.py -data preprocessed_data/final_bpe_64000/ -save_model ~/models/final_bpe_64000_brnn_42/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/final_bpe_64000_brnn_42" --tensorboard --tensorboard_log_dir="./train_logs/final_bpe_64000_brnn_42" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed 42 --encoder_type brnn
+
+# BERTTTTTT
+
+python OpenNMT-py/preprocess.py -train_src dataset/bert/bert_train.biased -train_tgt dataset/bert/bert_train.unbiased -valid_src dataset/bert/bert_dev.biased -valid_tgt dataset/bert/bert_dev.unbiased -save_data preprocessed_data/bert/ --src_vocab dataset/bert/vocab.txt --tgt_vocab dataset/bert/vocab.txt --share_vocab
+
+python OpenNMT-py/train.py -data preprocessed_data/bert/ -save_model ~/models/bert_brnn_-1/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/final_final_bert_brnn-1" --tensorboard --tensorboard_log_dir="./train_logs/final_final_bert_brnn-1" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed -1 --encoder_type brnn
+
+python OpenNMT-py/train.py -data preprocessed_data/bert/ -save_model ~/models/bert_brnn_42/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/bert_brnn_42" --tensorboard --tensorboard_log_dir="./train_logs/bert_brnn_42" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed 42 --encoder_type brnn
+
+
+# Test step
+
+
+# Standard 32000 Seed -1
+
+python OpenNMT-py/translate.py -model ~/models/standard_32000_brnn/_step_84075.pt -src dataset/biased_nmt/test.biased -tgt dataset/biased_nmt/test.unbiased -output test_results/standard_32000_brnn_-1 -gpu 0 -replace_unk
+
+python manual_diff_check.py dataset/biased_nmt/test.unbiased test_results/standard_32000_brnn_-1
+
+perl multi-bleu.perl < dataset/biased_nmt/test.unbiased test_results/standard_32000_brnn_-1
+
+# Standard 64000 Seed -1
+
+python OpenNMT-py/translate.py -model ~/models/standard_64000_brnn/_step_84075.pt -src dataset/biased_nmt/test.biased -tgt dataset/biased_nmt/test.unbiased -output test_results/standard_64000_brnn_-1 -gpu 0 -replace_unk
+
+python manual_diff_check.py dataset/biased_nmt/test.unbiased test_results/standard_64000_brnn_-1
+
+perl multi-bleu.perl < dataset/biased_nmt/test.unbiased test_results/standard_64000_brnn_-1
+
+# BPE 32000 Seed -1
+
+python OpenNMT-py/translate.py -model ~/models/final_bpe_32000_brnn/_step_84075.pt -src dataset/final_bpe_32000/test.biased -tgt dataset/final_bpe_32000/test.unbiased -output test_results/bpe_32000_brnn_-1 -gpu 0 -replace_unk
+
+python manual_diff_check.py dataset/final_bpe_32000/test.unbiased test_results/bpe_32000_brnn_-1
+
+spm_decode --model=dataset/final_bpe_32000/bpe32000.model --input_format=piece < test_results/bpe_32000_brnn_-1 > test_results/bpe_32000_brnn_-1_decoded
+
+
+perl multi-bleu.perl < dataset/biased_nmt/test.unbiased test_results/bpe_32000_brnn_-1_decoded
+
+
+
+# BPE 64000 Seed -1
+
+python OpenNMT-py/translate.py -model ~/models/final_bpe_64000_brnn/_step_84075.pt -src dataset/final_bpe_64000/test.biased -tgt dataset/final_bpe_64000/test.unbiased -output test_results/bpe_64000_brnn_-1 -gpu 0 -replace_unk
+
+python manual_diff_check.py dataset/final_bpe_64000/test.unbiased test_results/bpe_64000_brnn_-1
+
+spm_decode --model=dataset/final_bpe_32000/bpe32000.model --input_format=piece < test_results/bpe_32000_brnn_-1 > test_results/bpe_32000_brnn_-1_decoded
+
+
+perl multi-bleu.perl < dataset/biased_nmt/test.unbiased test_results/bpe_64000_-1_decoded
+
+
+# BERT Seed 42
+
+python OpenNMT-py/translate.py -model ~/models/bert_brnn_42/_step_84075.pt -src dataset/bert/bert_test.biased -tgt dataset/bert/bert_test.unbiased -output test_results/bert_brnn_42 -gpu 0
+
+python manual_diff_check.py dataset/bert/bert_test.unbiased test_results/bert_brnn_42
+
+perl multi-bleu.perl < dataset/bert/bert_test.unbiased test_results/bert_brnn_42
+
+
+
+# Standard 32000 Seed 42
+
+python OpenNMT-py/translate.py -model ~/models/standard_32000_brnn_42/_step_84075.pt -src dataset/biased_nmt/test.biased -tgt dataset/biased_nmt/test.unbiased -output test_results/standard_32000_brnn_42 -gpu 0 -replace_unk
+
+python manual_diff_check.py dataset/biased_nmt/test.unbiased test_results/standard_32000_brnn_42
+
+perl multi-bleu.perl < dataset/biased_nmt/test.unbiased test_results/standard_32000_brnn_42
+
+
+# Standard 64000 Seed 42
+
+python OpenNMT-py/translate.py -model ~/models/standard_64000_brnn_42/_step_84075.pt -src dataset/biased_nmt/test.biased -tgt dataset/biased_nmt/test.unbiased -output test_results/standard_64000_brnn_42 -gpu 0 -replace_unk
+
+python manual_diff_check.py dataset/biased_nmt/test.unbiased test_results/standard_64000_brnn_42
+
+perl multi-bleu.perl < dataset/biased_nmt/test.unbiased test_results/standard_64000_brnn_42
+
+# BPE 32000 Seed 42
+
+python OpenNMT-py/translate.py -model ~/models/final_bpe_32000_brnn_42/_step_84075.pt -src dataset/final_bpe_32000/test.biased -tgt dataset/final_bpe_32000/test.unbiased -output test_results/bpe_32000_brnn_42 -gpu 0 -replace_unk
+
+python manual_diff_check.py dataset/final_bpe_32000/test.unbiased test_results/bpe_32000_brnn_42
+
+spm_decode --model=dataset/final_bpe_32000/bpe32000.model --input_format=piece < test_results/bpe_32000_brnn_42 > test_results/bpe_32000_brnn_42_decoded
+
+
+perl multi-bleu.perl < dataset/biased_nmt/test.unbiased test_results/bpe_32000_brnn_42_decoded
+
+perl multi-bleu.perl < dataset/final_bpe_32000/test.unbiased test_results/bpe_32000_brnn_42
+
+
+
+# BPE 64000 Seed 42
+
+python OpenNMT-py/translate.py -model ~/models/final_bpe_64000_brnn_42/_step_84075.pt -src dataset/final_bpe_64000/test.biased -tgt dataset/final_bpe_64000/test.unbiased -output test_results/bpe_64000_brnn_42 -gpu 0 -replace_unk
+
+python manual_diff_check.py dataset/final_bpe_64000/test.unbiased test_results/bpe_64000_brnn_42
+
+spm_decode --model=dataset/final_bpe_64000/bpe64000.model --input_format=piece < test_results/bpe_64000_brnn_42 > test_results/bpe_64000_brnn_42_decoded
+
+
+perl multi-bleu.perl < dataset/biased_nmt/test.unbiased test_results/bpe_64000_brnn_42_decoded
+```

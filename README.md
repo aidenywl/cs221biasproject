@@ -1,12 +1,64 @@
+# Analyzing Tokenizers for neutralizing bias in text.
+
+Stanford University CS221 Introduction to Artificial Intelligence p-final.
+
 # Preprocessing Step
 
 ```shell
 python OpenNMT-py/preprocess.py -train_src dataset/neutral/src_train.txt -train_tgt dataset/neutral/tgt_train.txt -valid_src dataset/neutral/src_dev.txt -valid_tgt dataset/neutral/tgt_dev.txt -save_data preprocessed_data/neutral/ --tgt_vocab_size 32000 --src_vocab_size 32000 -report_every 10000
 ```
 
+# 32000
+
 ```shell
-python OpenNMT-py/preprocess.py -train_src dataset/biased_unbiased/biased_src_train.txt -train_tgt dataset/biased_unbiased/biased_tgt_train.txt -valid_src dataset/biased_unbiased/biased_src_dev.txt -valid_tgt dataset/biased_unbiased/biased_tgt_dev.txt -save_data preprocessed_data/biased_unbiased/ --tgt_vocab_size 32000 --src_vocab_size 32000 -report_every 10000
+python OpenNMT-py/preprocess.py -train_src dataset/biased_nmt/train.biased -train_tgt dataset/biased_nmt/train.unbiased -valid_src dataset/biased_nmt/dev.biased -valid_tgt dataset/biased_nmt/dev.unbiased -save_data preprocessed_data/standard_32000/ --tgt_vocab_size 32000 --src_vocab_size 32000 -report_every 10000 --share_vocab
 ```
+
+```shell
+python OpenNMT-py/train.py -data preprocessed_data/standard_32000/ -save_model ~/models/standard_32000/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/standard_32000" --tensorboard --tensorboard_log_dir="./train_logs/standard_32000" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed -1
+```
+
+# 64000
+
+```shell
+python OpenNMT-py/preprocess.py -train_src dataset/biased_nmt/train.biased -train_tgt dataset/biased_nmt/train.unbiased -valid_src dataset/biased_nmt/dev.biased -valid_tgt dataset/biased_nmt/dev.unbiased -save_data preprocessed_data/standard_64000/ --tgt_vocab_size 64000 --src_vocab_size 64000 -report_every 10000 --share_vocab
+```
+
+python OpenNMT-py/train.py -data preprocessed_data/standard_64000/ -save_model ~/models/standard_64000/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/standard_64000" --tensorboard --tensorboard_log_dir="./train_logs/" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed -1
+
+# BRNN
+
+python OpenNMT-py/train.py -data preprocessed_data/standard_64000/ -save_model ~/models/standard_64000_brnn/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/standard_64000_brnn" --tensorboard --tensorboard_log_dir="./train_logs/standard_64000_brnn" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed -1
+
+# 32000 BPE
+
+spm_train --input=biased_nmt/all.txt --model_prefix=bpe32000 --vocab_size=32000 --character_coverage=1.0 --model_type=bpe
+
+spm_encode --model=final_bpe_32000/bpe32000.model --output_format=piece < biased_nmt/train.biased > final_bpe_32000/train.biased
+
+spm_encode --model=final_bpe_32000/bpe32000.model --output_format=piece < biased_nmt/train.unbiased > final_bpe_32000/train.unbiased
+
+spm_encode --model=final_bpe_32000/bpe32000.model --output_format=piece < biased_nmt/dev.biased > final_bpe_32000/dev.biased
+
+spm_encode --model=final_bpe_32000/bpe32000.model --output_format=piece < biased_nmt/dev.unbiased > final_bpe_32000/dev.unbiased
+
+python OpenNMT-py/preprocess.py -train_src dataset/final_bpe_32000/train.biased -train_tgt dataset/final_bpe_32000/train.unbiased -valid_src dataset/final_bpe_32000/dev.biased -valid_tgt dataset/final_bpe_32000/dev.unbiased -save_data preprocessed_data/final_bpe_32000/ --src_vocab dataset/final_bpe_32000/bpe32000.vocab --tgt_vocab dataset/final_bpe_32000/bpe32000.vocab --share_vocab
+
+python OpenNMT-py/train.py -data preprocessed_data/final_bpe_32000/ -save_model ~/models/final_bpe_32000/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/final_bpe_32000" --tensorboard --tensorboard_log_dir="./train_logs/" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed -1
+
+# 64000 BPE
+
+spm_encode --model=final_bpe_64000/bpe64000.model --output_format=piece < biased_nmt/train.biased > final_bpe_64000/train.biased
+
+spm_encode --model=final_bpe_64000/bpe64000.model --output_format=piece < biased_nmt/train.unbiased > final_bpe_64000/train.unbiased
+
+spm_encode --model=final_bpe_64000/bpe64000.model --output_format=piece < biased_nmt/dev.biased > final_bpe_64000/dev.biased
+
+spm_encode --model=final_bpe_64000/bpe64000.model --output_format=piece < biased_nmt/dev.unbiased > final_bpe_64000/dev.unbiased
+
+python OpenNMT-py/preprocess.py -train_src dataset/final_bpe_64000/train.biased -train_tgt dataset/final_bpe_64000/train.unbiased -valid_src dataset/final_bpe_64000/dev.biased -valid_tgt dataset/final_bpe_64000/dev.unbiased -save_data preprocessed_data/final_bpe_64000/ --src_vocab dataset/final_bpe_64000/bpe64000.vocab --tgt_vocab dataset/final_bpe_64000/bpe64000.vocab --share_vocab
+
+python OpenNMT-py/train.py -data preprocessed_data/final_bpe_64000/ -save_model ~/models/final_bpe_64000/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/final_bpe_64000" --tensorboard --tensorboard_log_dir="./train_logs/" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed -1
 
 # Training Step
 
@@ -18,12 +70,50 @@ python OpenNMT-py/train.py -data preprocessed_data/neutral/ -save_model ~/models
 python OpenNMT-py/train.py -data preprocessed_data/biased_unbiased/ -save_model ~/models/biased_unbiased/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "biased_unbiased_log" --tensorboard --tensorboard_log_dir="./train_logs/" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16
 ```
 
-# More vocab
+# Seed 42
+
+python OpenNMT-py/train.py -data preprocessed_data/standard_64000/ -save_model ~/models/standard_64000_seed42/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/standard_64000_seed42" --tensorboard --tensorboard_log_dir="./train_logs/standard_64000_seed42" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed 42
+
+# ################################### BIDIRECTIONAL
+
+# 32000
 
 ```shell
-python OpenNMT-py/preprocess.py -train_src dataset/biased_unbiased/biased_src_train.txt -train_tgt dataset/biased_unbiased/biased_tgt_train.txt -valid_src dataset/biased_unbiased/biased_src_dev.txt -valid_tgt dataset/biased_unbiased/biased_tgt_dev.txt -save_data preprocessed_data/biased_32000_new/ --tgt_vocab_size 32000 --src_vocab_size 32000 -report_every 10000 --share_vocab
+python OpenNMT-py/train.py -data preprocessed_data/standard_32000/ -save_model ~/models/standard_32000_brnn/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/standard_32000_brnn" --tensorboard --tensorboard_log_dir="./train_logs/standard_32000_brnn" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed -1 --encoder_type brnn
 ```
 
+# 64000
+
 ```shell
-python OpenNMT-py/train.py -data preprocessed_data/biased_32000/ -save_model ~/models/biased_32000_new/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/biased_32000" --tensorboard --tensorboard_log_dir="./train_logs/" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp
+python OpenNMT-py/train.py -data preprocessed_data/standard_64000/ -save_model ~/models/standard_64000_brnn/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/standard_64000_brnn" --tensorboard --tensorboard_log_dir="./train_logs/standard_64000_brnn" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed -1 --encoder_type brnn
 ```
+
+# 32000 BPE
+
+python OpenNMT-py/train.py -data preprocessed_data/final_bpe_32000/ -save_model ~/models/final_bpe_32000_brnn/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/final_bpe_32000_brnn" --tensorboard --tensorboard_log_dir="./train_logs/final_bpe_32000_brnn" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed -1 --encoder_type brnn
+
+# 64000 BPE
+
+python OpenNMT-py/train.py -data preprocessed_data/final_bpe_64000/ -save_model ~/models/final_bpe_64000_brnn/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/final_bpe_64000_brnn" --tensorboard --tensorboard_log_dir="./train_logs/final_bpe_64000_brnn" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed -1 --encoder_type brnn
+
+# SEED FORTY TWO
+
+# 32000
+
+```shell
+python OpenNMT-py/train.py -data preprocessed_data/standard_32000/ -save_model ~/models/standard_32000_brnn_42/  -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/standard_32000_brnn_42" --tensorboard --tensorboard_log_dir="./train_logs/standard_32000_brnn_42" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed 42 --encoder_type brnn
+```
+
+# 64000
+
+```shell
+python OpenNMT-py/train.py -data preprocessed_data/standard_64000/ -save_model ~/models/standard_64000_brnn_42/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/standard_64000_brnn_42" --tensorboard --tensorboard_log_dir="./train_logs/standard_64000_brnn_42" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed 42 --encoder_type brnn
+```
+
+# 32000 BPE
+
+python OpenNMT-py/train.py -data preprocessed_data/final_bpe_32000/ -save_model ~/models/final_bpe_32000_brnn_42/ -world_size 2 -gpu_ranks 1 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/final_bpe_32000_brnn_42" --tensorboard --tensorboard_log_dir="./train_logs/final_bpe_32000_brnn_42" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed 42 --encoder_type brnn
+
+# 64000 BPE
+
+python OpenNMT-py/train.py -data preprocessed_data/final_bpe_64000/ -save_model ~/models/final_bpe_64000_brnn_42/ -gpu_ranks 0 -learning_rate 0.005 -opt adam -train_steps 500000 --log_file "logs/final_bpe_64000_brnn_42" --tensorboard --tensorboard_log_dir="./train_logs/final_bpe_64000_brnn_42" --save_checkpoint_steps 3363 --valid_steps 3363 --batch_size 16 --global_attention mlp --src_word_vec_size 512 --tgt_word_vec_size 512 --enc_rnn_size 512 --dec_rnn_size 512 --seed 42 --encoder_type brnn

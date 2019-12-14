@@ -1,5 +1,10 @@
 from difflib import SequenceMatcher, Differ
-text1 = open("test1.txt").read()
-text2 = open("test2.txt").read()
+import sys
+
+f1 = sys.argv[1]
+f2 = sys.argv[2]
+
+text1 = open(f1).read()
+text2 = open(f2).read()
 m = SequenceMatcher(None, text1, text2)
 print(m.ratio())

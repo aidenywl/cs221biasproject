@@ -2,6 +2,16 @@
 
 Stanford University CS221 Introduction to Artificial Intelligence p-final.
 
+Out of all the models we have trained, the OpenNMT model trained with:
+- OpenNMT's standard white space and punctuation tokenizer
+- A vocabulary size of 32000
+- A seed of -1
+- At 25 epochs
+
+Achieved the best accuracy of 32.70% on our test set.
+
+The OpenNMT mode can be downloaded here: https://drive.google.com/file/d/1Stl_TqsTHfua2Fey0lx18vmJfdpbpzIN/view?usp=sharing
+
 # Preprocessing Step
 
 ```shell

@@ -12,10 +12,27 @@ Achieved the best accuracy of 32.70% on our test set.
 
 The OpenNMT mode can be downloaded here: https://drive.google.com/file/d/1Stl_TqsTHfua2Fey0lx18vmJfdpbpzIN/view?usp=sharing
 
+# Setting up the server
+The OpenNMT flask server is set up and extended with CORS to allow it to be used like an API by any host.
+
+The server and model configuration is in `OpenNMT-py/available_models/conf.json`
+
+To start the server, simply run
+```
+export IP="0.0.0.0"
+export PORT=5000
+export URL_ROOT="/translator"
+export CONFIG="./available_models/conf.json"
+
+python server.py --ip $IP --port $PORT --url_root $URL_ROOT -- config $CONFIG
+```
+
+
 # Preprocessing Step
 
 ```shell
-python OpenNMT-py/preprocess.py -train_src dataset/neutral/src_train.txt -train_tgt dataset/neutral/tgt_train.txt -valid_src dataset/neutral/src_dev.txt -valid_tgt dataset/neutral/tgt_dev.txt -save_data preprocessed_data/neutral/ --tgt_vocab_size 32000 --src_vocab_size 32000 -report_every 10000
+python OpenNMT-py/preprocess.py -train_src dataset/neutral/src_train.txt -train_tgt dataset/neutral/tgt_train.txt -valid_src dataset/neutral/src_dev.txt -valid_tgt dataset/neutral/tgt
+_dev.txt -save_data preprocessed_data/neutral/ --tgt_vocab_size 32000 --src_vocab_size 32000 -report_every 10000
 ```
 
 # 32000

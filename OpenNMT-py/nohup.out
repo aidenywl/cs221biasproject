@@ -1,0 +1,639 @@
+[2020-06-07 10:24:47,317 INFO] Loading model 100
+Pre-loading model 100
+ * Serving Flask app "onmt.bin.server" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+[2020-06-07 10:24:50,460 INFO]  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+[2020-06-07 10:25:20,169 INFO] Running translation using 100
+/opt/conda/conda-bld/pytorch_1587428190859/work/aten/src/ATen/native/BinaryOps.cpp:66: UserWarning: Integer division of tensors using div or / is deprecated, and in a future release div will perform true division as in Python 3. Use true_divide or floor_divide (// in Python) instead.
+[2020-06-07 10:25:21,515 INFO] Using model #100	1 inputs
+               	translation time: 1.346496
+[2020-06-07 10:25:21,516 INFO] Translation Results: 1
+[2020-06-07 10:25:21,517 INFO] 219.75.24.172 - - [07/Jun/2020 10:25:21] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:25:26,160 INFO] 219.75.24.172 - - [07/Jun/2020 10:25:26] "[37mGET /translator/models HTTP/1.1[0m" 200 -
+[2020-06-07 10:25:51,518 INFO] Timeout: sending model 100 to CPU
+[2020-06-07 10:42:14,024 INFO] 219.75.24.172 - - [07/Jun/2020 10:42:14] "[31m[1mPOST /translator/translate?src=I%20am%20an%20immigrant%20settler%20from%20singapore HTTP/1.1[0m" 400 -
+[2020-06-07 10:42:22,560 INFO] Running translation using 100
+[2020-06-07 10:42:23,103 INFO] Using model #100	1 inputs
+               	translation time: 0.542164
+[2020-06-07 10:42:23,103 INFO] Translation Results: 1
+[2020-06-07 10:42:23,104 INFO] 219.75.24.172 - - [07/Jun/2020 10:42:23] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:42:53,105 INFO] Timeout: sending model 100 to CPU
+[2020-06-07 10:44:21,219 INFO] 219.75.24.172 - - [07/Jun/2020 10:44:21] "[31m[1mPOST /translator/translate?src=I%20am%20an%20immigrant%20settler%20from%20singapore HTTP/1.1[0m" 400 -
+[2020-06-07 10:44:35,801 INFO] 219.75.24.172 - - [07/Jun/2020 10:44:35] "[31m[1mPOST /translator/translate HTTP/1.1[0m" 400 -
+[2020-06-07 10:44:55,964 INFO] 219.75.24.172 - - [07/Jun/2020 10:44:55] "[37mGET /translator/models HTTP/1.1[0m" 200 -
+[2020-06-07 10:45:25,006 INFO] 219.75.24.172 - - [07/Jun/2020 10:45:25] "[31m[1mPOST /translator/translate?src=I%20am%20an%20immigrant%20settler%20from%20Singapore&id=100 HTTP/1.1[0m" 400 -
+[2020-06-07 10:47:16,356 ERROR] Exception on /translator/translate [POST]
+Traceback (most recent call last):
+  File "/home/aidenlow/miniconda3/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/aidenlow/miniconda3/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/aidenlow/miniconda3/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/aidenlow/miniconda3/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/aidenlow/miniconda3/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/aidenlow/miniconda3/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/aidenlow/cs221biasproject/OpenNMT-py/onmt/bin/server.py", line 78, in translate
+    trans, scores, n_best, times = translation_server.run(inputs)
+  File "/home/aidenlow/cs221biasproject/OpenNMT-py/onmt/translate/translation_server.py", line 156, in run
+    model_id = inputs[0].get("id", 0)
+KeyError: 0
+[2020-06-07 10:47:16,446 INFO] 219.75.24.172 - - [07/Jun/2020 10:47:16] "[35m[1mPOST /translator/translate HTTP/1.1[0m" 500 -
+[2020-06-07 10:47:21,745 ERROR] Exception on /translator/translate [POST]
+Traceback (most recent call last):
+  File "/home/aidenlow/miniconda3/lib/python3.7/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/aidenlow/miniconda3/lib/python3.7/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/aidenlow/miniconda3/lib/python3.7/site-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/aidenlow/miniconda3/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/aidenlow/miniconda3/lib/python3.7/site-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/aidenlow/miniconda3/lib/python3.7/site-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/aidenlow/cs221biasproject/OpenNMT-py/onmt/bin/server.py", line 78, in translate
+    trans, scores, n_best, times = translation_server.run(inputs)
+  File "/home/aidenlow/cs221biasproject/OpenNMT-py/onmt/translate/translation_server.py", line 156, in run
+    model_id = inputs[0].get("id", 0)
+KeyError: 0
+[2020-06-07 10:47:21,757 INFO] 219.75.24.172 - - [07/Jun/2020 10:47:21] "[35m[1mPOST /translator/translate HTTP/1.1[0m" 500 -
+[2020-06-07 10:47:28,223 INFO] Running translation using 100
+[2020-06-07 10:47:28,750 INFO] Using model #100	1 inputs
+               	translation time: 0.527287
+[2020-06-07 10:47:28,751 INFO] Translation Results: 1
+[2020-06-07 10:47:28,751 INFO] 219.75.24.172 - - [07/Jun/2020 10:47:28] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:47:49,651 INFO] Running translation using 100
+[2020-06-07 10:47:50,686 INFO] Using model #100	2 inputs
+               	translation time: 1.034556
+[2020-06-07 10:47:50,686 INFO] Translation Results: 2
+[2020-06-07 10:47:50,687 INFO] 219.75.24.172 - - [07/Jun/2020 10:47:50] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:48:20,688 INFO] Timeout: sending model 100 to CPU
+[2020-06-07 10:48:21,657 INFO] Running translation using 100
+[2020-06-07 10:48:22,167 INFO] Using model #100	1 inputs
+               	translation time: 0.510360
+[2020-06-07 10:48:22,168 INFO] Translation Results: 1
+[2020-06-07 10:48:22,168 INFO] 219.75.24.172 - - [07/Jun/2020 10:48:22] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:48:37,782 INFO] Running translation using 100
+[2020-06-07 10:48:38,294 INFO] Using model #100	1 inputs
+               	translation time: 0.511292
+[2020-06-07 10:48:38,294 INFO] Translation Results: 1
+[2020-06-07 10:48:38,295 INFO] 219.75.24.172 - - [07/Jun/2020 10:48:38] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:48:58,305 INFO] Running translation using 100
+[2020-06-07 10:48:58,815 INFO] Using model #100	1 inputs
+               	translation time: 0.510139
+[2020-06-07 10:48:58,816 INFO] Translation Results: 1
+[2020-06-07 10:48:58,816 INFO] 219.75.24.172 - - [07/Jun/2020 10:48:58] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:49:28,817 INFO] Timeout: sending model 100 to CPU
+[2020-06-07 10:55:22,274 INFO] Loading model 100
+Pre-loading model 100
+ * Serving Flask app "onmt.bin.server" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+[2020-06-07 10:55:25,516 INFO]  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+[2020-06-07 10:55:25,874 INFO] Running translation using 100
+/opt/conda/conda-bld/pytorch_1587428190859/work/aten/src/ATen/native/BinaryOps.cpp:66: UserWarning: Integer division of tensors using div or / is deprecated, and in a future release div will perform true division as in Python 3. Use true_divide or floor_divide (// in Python) instead.
+[2020-06-07 10:55:26,425 INFO] Using model #100	1 inputs
+               	translation time: 0.551233
+[2020-06-07 10:55:26,425 INFO] Translation Results: 1
+[2020-06-07 10:55:26,426 INFO] 219.75.24.172 - - [07/Jun/2020 10:55:26] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:55:36,626 INFO] Running translation using 100
+[2020-06-07 10:55:37,701 INFO] Using model #100	2 inputs
+               	translation time: 1.074404
+[2020-06-07 10:55:37,701 INFO] Translation Results: 2
+[2020-06-07 10:55:37,702 INFO] 219.75.24.172 - - [07/Jun/2020 10:55:37] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:55:45,361 INFO] Running translation using 100
+[2020-06-07 10:55:46,247 INFO] Using model #100	2 inputs
+               	translation time: 0.886009
+[2020-06-07 10:55:46,247 INFO] Translation Results: 2
+[2020-06-07 10:55:46,248 INFO] 219.75.24.172 - - [07/Jun/2020 10:55:46] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:56:03,036 INFO] Running translation using 100
+[2020-06-07 10:56:03,933 INFO] Using model #100	2 inputs
+               	translation time: 0.897345
+[2020-06-07 10:56:03,933 INFO] Translation Results: 2
+[2020-06-07 10:56:03,934 INFO] 219.75.24.172 - - [07/Jun/2020 10:56:03] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:56:33,934 INFO] Timeout: sending model 100 to CPU
+[2020-06-07 10:57:57,344 INFO] Running translation using 100
+[2020-06-07 10:57:58,697 INFO] Using model #100	3 inputs
+               	translation time: 1.353235
+[2020-06-07 10:57:58,698 INFO] Translation Results: 3
+[2020-06-07 10:57:58,698 INFO] 219.75.24.172 - - [07/Jun/2020 10:57:58] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:58:25,598 INFO] Running translation using 100
+[2020-06-07 10:58:27,159 INFO] Using model #100	3 inputs
+               	translation time: 1.561702
+[2020-06-07 10:58:27,160 INFO] Translation Results: 3
+[2020-06-07 10:58:27,160 INFO] 219.75.24.172 - - [07/Jun/2020 10:58:27] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:58:56,691 INFO] Running translation using 100
+[2020-06-07 10:58:57,916 INFO] Using model #100	3 inputs
+               	translation time: 1.224391
+[2020-06-07 10:58:57,916 INFO] Translation Results: 3
+[2020-06-07 10:58:57,917 INFO] 219.75.24.172 - - [07/Jun/2020 10:58:57] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:59:09,138 INFO] Running translation using 100
+[2020-06-07 10:59:10,310 INFO] Using model #100	3 inputs
+               	translation time: 1.171577
+[2020-06-07 10:59:10,310 INFO] Translation Results: 3
+[2020-06-07 10:59:10,311 INFO] 219.75.24.172 - - [07/Jun/2020 10:59:10] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 10:59:40,312 INFO] Timeout: sending model 100 to CPU
+[2020-06-07 11:00:10,765 INFO] Running translation using 100
+[2020-06-07 11:00:11,981 INFO] Using model #100	3 inputs
+               	translation time: 1.215286
+[2020-06-07 11:00:11,981 INFO] Translation Results: 3
+[2020-06-07 11:00:11,982 INFO] 219.75.24.172 - - [07/Jun/2020 11:00:11] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 11:00:30,400 INFO] Running translation using 100
+[2020-06-07 11:00:31,437 INFO] Using model #100	3 inputs
+               	translation time: 1.037615
+[2020-06-07 11:00:31,438 INFO] Translation Results: 3
+[2020-06-07 11:00:31,438 INFO] 219.75.24.172 - - [07/Jun/2020 11:00:31] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 11:00:40,840 INFO] Running translation using 100
+[2020-06-07 11:00:41,786 INFO] Using model #100	3 inputs
+               	translation time: 0.945581
+[2020-06-07 11:00:41,786 INFO] Translation Results: 3
+[2020-06-07 11:00:41,786 INFO] 219.75.24.172 - - [07/Jun/2020 11:00:41] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 11:00:51,974 INFO] Running translation using 100
+[2020-06-07 11:00:52,513 INFO] Using model #100	1 inputs
+               	translation time: 0.538785
+[2020-06-07 11:00:52,513 INFO] Translation Results: 1
+[2020-06-07 11:00:52,514 INFO] 219.75.24.172 - - [07/Jun/2020 11:00:52] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 11:01:18,329 INFO] Running translation using 100
+[2020-06-07 11:01:18,730 INFO] Using model #100	1 inputs
+               	translation time: 0.400774
+[2020-06-07 11:01:18,730 INFO] Translation Results: 1
+[2020-06-07 11:01:18,731 INFO] 219.75.24.172 - - [07/Jun/2020 11:01:18] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 11:01:25,605 INFO] 219.75.24.172 - - [07/Jun/2020 11:01:25] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 11:01:28,319 INFO] Running translation using 100
+[2020-06-07 11:01:28,713 INFO] Using model #100	1 inputs
+               	translation time: 0.393971
+[2020-06-07 11:01:28,713 INFO] Translation Results: 1
+[2020-06-07 11:01:28,714 INFO] 219.75.24.172 - - [07/Jun/2020 11:01:28] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 11:01:58,715 INFO] Timeout: sending model 100 to CPU
+[2020-06-07 11:03:14,174 INFO] Running translation using 100
+[2020-06-07 11:03:14,888 INFO] Using model #100	1 inputs
+               	translation time: 0.714134
+[2020-06-07 11:03:14,888 INFO] Translation Results: 1
+[2020-06-07 11:03:14,889 INFO] 219.75.24.172 - - [07/Jun/2020 11:03:14] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 11:03:44,890 INFO] Timeout: sending model 100 to CPU
+[2020-06-07 15:13:05,760 INFO] Running translation using 100
+[2020-06-07 15:13:06,472 INFO] Using model #100	1 inputs
+               	translation time: 0.712418
+[2020-06-07 15:13:06,473 INFO] Translation Results: 1
+[2020-06-07 15:13:06,474 INFO] 219.75.24.172 - - [07/Jun/2020 15:13:06] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-07 15:13:36,476 INFO] Timeout: sending model 100 to CPU
+[2020-06-07 18:20:22,880 INFO] 209.17.96.82 - - [07/Jun/2020 18:20:22] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-07 22:06:40,985 ERROR] 198.108.66.198 - - [07/Jun/2020 22:06:40] code 400, message Bad request version ('À\x14À')
+[2020-06-07 22:06:40,989 INFO] 198.108.66.198 - - [07/Jun/2020 22:06:40] "[35m[1m {  wÝ!i.jº|¿3S$N8v¡Að$¤½«È  À/À+ÀÀÀÀ	ÀÀ[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-07 22:06:41,106 INFO] 198.108.66.198 - - [07/Jun/2020 22:06:41] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-07 22:06:41,213 INFO] 198.108.66.198 - - [07/Jun/2020 22:06:41] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-07 22:07:51,538 INFO] 198.108.67.48 - - [07/Jun/2020 22:07:51] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-08 03:38:47,864 INFO] 209.17.96.98 - - [08/Jun/2020 03:38:47] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-08 10:11:58,298 ERROR] 83.97.20.21 - - [08/Jun/2020 10:11:58] code 400, message Bad request version ('0.12\x00')
+[2020-06-08 10:11:58,302 INFO] 83.97.20.21 - - [08/Jun/2020 10:11:58] "[35m[1m   ¤ÿSMBr    @              @     PC NETWORK PROGRAM 1.0 MICROSOFT NETWORKS 1.03 MICROSOFT NETWORKS 3.0 LANMAN1.0 LM1.2X002 Samba NT LANMAN 1.0 NT LM 0.12 [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-08 10:11:58,474 INFO] 83.97.20.21 - - [08/Jun/2020 10:11:58] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-08 10:18:41,813 INFO] Running translation using 100
+[2020-06-08 10:18:42,645 INFO] Using model #100	1 inputs
+               	translation time: 0.832794
+[2020-06-08 10:18:42,646 INFO] Translation Results: 1
+[2020-06-08 10:18:42,649 INFO] 219.75.24.172 - - [08/Jun/2020 10:18:42] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-08 10:19:03,699 INFO] Running translation using 100
+[2020-06-08 10:19:04,608 INFO] Using model #100	1 inputs
+               	translation time: 0.908916
+[2020-06-08 10:19:04,608 INFO] Translation Results: 1
+[2020-06-08 10:19:04,609 INFO] 219.75.24.172 - - [08/Jun/2020 10:19:04] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-08 10:19:20,134 INFO] Running translation using 100
+[2020-06-08 10:19:21,052 INFO] Using model #100	1 inputs
+               	translation time: 0.918071
+[2020-06-08 10:19:21,053 INFO] Translation Results: 1
+[2020-06-08 10:19:21,053 INFO] 219.75.24.172 - - [08/Jun/2020 10:19:21] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-08 10:19:51,054 INFO] Timeout: sending model 100 to CPU
+[2020-06-08 10:19:52,976 INFO] Running translation using 100
+[2020-06-08 10:19:55,603 INFO] Using model #100	1 inputs
+               	translation time: 2.626677
+[2020-06-08 10:19:55,603 INFO] Translation Results: 1
+[2020-06-08 10:19:55,604 INFO] 219.75.24.172 - - [08/Jun/2020 10:19:55] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-08 10:20:21,109 INFO] Running translation using 100
+[2020-06-08 10:20:21,780 INFO] Using model #100	1 inputs
+               	translation time: 0.671086
+[2020-06-08 10:20:21,781 INFO] Translation Results: 1
+[2020-06-08 10:20:21,781 INFO] 219.75.24.172 - - [08/Jun/2020 10:20:21] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-08 10:20:51,782 INFO] Timeout: sending model 100 to CPU
+[2020-06-08 10:20:56,240 INFO] Running translation using 100
+[2020-06-08 10:20:56,632 INFO] Using model #100	1 inputs
+               	translation time: 0.391753
+[2020-06-08 10:20:56,632 INFO] Translation Results: 1
+[2020-06-08 10:20:56,633 INFO] 219.75.24.172 - - [08/Jun/2020 10:20:56] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-08 10:21:26,634 INFO] Timeout: sending model 100 to CPU
+[2020-06-08 10:48:25,156 INFO] Running translation using 100
+[2020-06-08 10:48:25,561 INFO] Using model #100	1 inputs
+               	translation time: 0.404183
+[2020-06-08 10:48:25,561 INFO] Translation Results: 1
+[2020-06-08 10:48:25,561 INFO] 219.75.24.172 - - [08/Jun/2020 10:48:25] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-08 10:48:55,562 INFO] Timeout: sending model 100 to CPU
+[2020-06-08 20:51:39,388 INFO] 209.17.96.170 - - [08/Jun/2020 20:51:39] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-08 22:46:11,883 INFO] 209.17.96.98 - - [08/Jun/2020 22:46:11] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-08 23:48:11,883 ERROR] 120.132.3.65 - - [08/Jun/2020 23:48:11] code 400, message Bad request syntax ('\x16\x03\x03\x00z\x01\x00\x00v\x03\x03^ÞÎ;\x0eþk\x8b2Äå\x8eê\x11ÂEZ\x04-gU7\x17\x84Ê!s\x9f=\x8e§¶\x00\x00\x12À,À+À/À0À\x13À\x14\x00\x9c\x00/\x005\x01\x00\x00;\x00')
+[2020-06-08 23:48:11,904 INFO] 120.132.3.65 - - [08/Jun/2020 23:48:11] "[35m[1m z  v^ÞÎ;þk2ÄåêÂEZ-gU7Ê!s=§¶  À,À+À/À0ÀÀ  / 5  ; [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-08 23:48:11,910 INFO] 120.132.3.65 - - [08/Jun/2020 23:48:11] "[33mGET http://www.qq.com/404/search_children.js HTTP/1.1[0m" 404 -
+[2020-06-08 23:48:21,664 ERROR] 120.132.3.65 - - [08/Jun/2020 23:48:21] code 400, message Bad request syntax ('\x00\x9c\x00\x01\x1a+<M\x00\x01\x00\x00\x01\x00\x00\x00\x00\x00\x00\x03\x00\x00\x00\x03ÿÿ\x00\x01local\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00cananian\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00')
+[2020-06-08 23:48:21,664 INFO] 120.132.3.65 - - [08/Jun/2020 23:48:21] "[35m[1m  +<M            ÿÿ local                                                           cananian                                                        [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-08 23:48:21,665 ERROR] 120.132.3.65 - - [08/Jun/2020 23:48:21] code 400, message Bad request syntax ('\x04\x01\x00PpTi4\x00')
+[2020-06-08 23:48:21,665 INFO] 120.132.3.65 - - [08/Jun/2020 23:48:21] "[35m[1m PpTi4 [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-08 23:48:21,667 ERROR] 120.132.3.65 - - [08/Jun/2020 23:48:21] code 400, message Bad request syntax ('\x05\x01\x00')
+[2020-06-08 23:48:21,667 INFO] 120.132.3.65 - - [08/Jun/2020 23:48:21] "[35m[1m [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-09 08:04:28,091 INFO] 196.52.43.89 - - [09/Jun/2020 08:04:28] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-09 17:09:16,294 ERROR] 83.97.20.21 - - [09/Jun/2020 17:09:16] code 400, message Bad request version ('0.12\x00')
+[2020-06-09 17:09:16,298 INFO] 83.97.20.21 - - [09/Jun/2020 17:09:16] "[35m[1m   ¤ÿSMBr    @              @     PC NETWORK PROGRAM 1.0 MICROSOFT NETWORKS 1.03 MICROSOFT NETWORKS 3.0 LANMAN1.0 LM1.2X002 Samba NT LANMAN 1.0 NT LM 0.12 [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-09 17:09:16,477 INFO] 83.97.20.21 - - [09/Jun/2020 17:09:16] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-09 18:17:29,254 INFO] 209.17.96.154 - - [09/Jun/2020 18:17:29] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-09 19:41:45,174 INFO] 209.17.96.178 - - [09/Jun/2020 19:41:45] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-10 05:13:08,033 INFO] 192.35.169.48 - - [10/Jun/2020 05:13:08] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-10 11:09:16,733 INFO] Running translation using 100
+[2020-06-10 11:09:17,658 INFO] Using model #100	1 inputs
+               	translation time: 0.926077
+[2020-06-10 11:09:17,659 INFO] Translation Results: 1
+[2020-06-10 11:09:17,662 INFO] 219.75.24.172 - - [10/Jun/2020 11:09:17] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:09:25,560 INFO] Running translation using 100
+[2020-06-10 11:09:26,289 INFO] Using model #100	1 inputs
+               	translation time: 0.729321
+[2020-06-10 11:09:26,290 INFO] Translation Results: 1
+[2020-06-10 11:09:26,290 INFO] 219.75.24.172 - - [10/Jun/2020 11:09:26] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:09:29,793 INFO] Running translation using 100
+[2020-06-10 11:09:30,520 INFO] Using model #100	1 inputs
+               	translation time: 0.727355
+[2020-06-10 11:09:30,521 INFO] Translation Results: 1
+[2020-06-10 11:09:30,521 INFO] 219.75.24.172 - - [10/Jun/2020 11:09:30] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:09:43,365 INFO] Running translation using 100
+[2020-06-10 11:09:43,848 INFO] Using model #100	1 inputs
+               	translation time: 0.482526
+[2020-06-10 11:09:43,848 INFO] Translation Results: 1
+[2020-06-10 11:09:43,849 INFO] 219.75.24.172 - - [10/Jun/2020 11:09:43] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:09:52,353 INFO] Running translation using 100
+[2020-06-10 11:09:52,678 INFO] Using model #100	1 inputs
+               	translation time: 0.325193
+[2020-06-10 11:09:52,678 INFO] Translation Results: 1
+[2020-06-10 11:09:52,679 INFO] 219.75.24.172 - - [10/Jun/2020 11:09:52] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:10:08,346 INFO] Running translation using 100
+[2020-06-10 11:10:09,136 INFO] Using model #100	1 inputs
+               	translation time: 0.790003
+[2020-06-10 11:10:09,137 INFO] Translation Results: 1
+[2020-06-10 11:10:09,137 INFO] 219.75.24.172 - - [10/Jun/2020 11:10:09] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:10:14,171 INFO] Running translation using 100
+[2020-06-10 11:10:14,868 INFO] Using model #100	1 inputs
+               	translation time: 0.697374
+[2020-06-10 11:10:14,868 INFO] Translation Results: 1
+[2020-06-10 11:10:14,869 INFO] 219.75.24.172 - - [10/Jun/2020 11:10:14] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:10:17,499 INFO] Running translation using 100
+[2020-06-10 11:10:18,207 INFO] Using model #100	1 inputs
+               	translation time: 0.707881
+[2020-06-10 11:10:18,207 INFO] Translation Results: 1
+[2020-06-10 11:10:18,208 INFO] 219.75.24.172 - - [10/Jun/2020 11:10:18] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:10:41,482 INFO] Running translation using 100
+[2020-06-10 11:10:42,171 INFO] Using model #100	1 inputs
+               	translation time: 0.689286
+[2020-06-10 11:10:42,172 INFO] Translation Results: 1
+[2020-06-10 11:10:42,172 INFO] 219.75.24.172 - - [10/Jun/2020 11:10:42] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:10:46,151 INFO] Running translation using 100
+[2020-06-10 11:10:46,917 INFO] Using model #100	1 inputs
+               	translation time: 0.765557
+[2020-06-10 11:10:46,919 INFO] Translation Results: 1
+[2020-06-10 11:10:46,920 INFO] 219.75.24.172 - - [10/Jun/2020 11:10:46] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:11:16,920 INFO] Timeout: sending model 100 to CPU
+[2020-06-10 11:11:36,073 INFO] Running translation using 100
+[2020-06-10 11:11:36,838 INFO] Using model #100	1 inputs
+               	translation time: 0.764489
+[2020-06-10 11:11:36,838 INFO] Translation Results: 1
+[2020-06-10 11:11:36,839 INFO] 219.75.24.172 - - [10/Jun/2020 11:11:36] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:11:45,440 INFO] Running translation using 100
+[2020-06-10 11:11:46,185 INFO] Using model #100	1 inputs
+               	translation time: 0.745115
+[2020-06-10 11:11:46,185 INFO] Translation Results: 1
+[2020-06-10 11:11:46,186 INFO] 219.75.24.172 - - [10/Jun/2020 11:11:46] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:11:51,941 INFO] Running translation using 100
+[2020-06-10 11:11:52,694 INFO] Using model #100	1 inputs
+               	translation time: 0.752741
+[2020-06-10 11:11:52,694 INFO] Translation Results: 1
+[2020-06-10 11:11:52,695 INFO] 219.75.24.172 - - [10/Jun/2020 11:11:52] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:12:22,696 INFO] Timeout: sending model 100 to CPU
+[2020-06-10 11:12:48,606 INFO] Running translation using 100
+[2020-06-10 11:12:49,221 INFO] Using model #100	1 inputs
+               	translation time: 0.614435
+[2020-06-10 11:12:49,221 INFO] Translation Results: 1
+[2020-06-10 11:12:49,222 INFO] 219.75.24.172 - - [10/Jun/2020 11:12:49] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:13:03,523 INFO] Running translation using 100
+[2020-06-10 11:13:04,022 INFO] Using model #100	1 inputs
+               	translation time: 0.499503
+[2020-06-10 11:13:04,023 INFO] Translation Results: 1
+[2020-06-10 11:13:04,023 INFO] 219.75.24.172 - - [10/Jun/2020 11:13:04] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:13:23,067 INFO] Running translation using 100
+[2020-06-10 11:13:23,394 INFO] Using model #100	1 inputs
+               	translation time: 0.326931
+[2020-06-10 11:13:23,394 INFO] Translation Results: 1
+[2020-06-10 11:13:23,395 INFO] 219.75.24.172 - - [10/Jun/2020 11:13:23] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:13:26,487 INFO] Running translation using 100
+[2020-06-10 11:13:26,822 INFO] Using model #100	1 inputs
+               	translation time: 0.335033
+[2020-06-10 11:13:26,823 INFO] Translation Results: 1
+[2020-06-10 11:13:26,823 INFO] 219.75.24.172 - - [10/Jun/2020 11:13:26] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:13:56,824 INFO] Timeout: sending model 100 to CPU
+[2020-06-10 11:15:07,506 INFO] Running translation using 100
+[2020-06-10 11:15:08,290 INFO] Using model #100	1 inputs
+               	translation time: 0.784097
+[2020-06-10 11:15:08,291 INFO] Translation Results: 1
+[2020-06-10 11:15:08,291 INFO] 219.75.24.172 - - [10/Jun/2020 11:15:08] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:15:38,292 INFO] Timeout: sending model 100 to CPU
+[2020-06-10 11:15:48,615 INFO] Running translation using 100
+[2020-06-10 11:15:49,399 INFO] Using model #100	1 inputs
+               	translation time: 0.784187
+[2020-06-10 11:15:49,400 INFO] Translation Results: 1
+[2020-06-10 11:15:49,400 INFO] 219.75.24.172 - - [10/Jun/2020 11:15:49] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:16:19,401 INFO] Timeout: sending model 100 to CPU
+[2020-06-10 11:16:34,744 INFO] Running translation using 100
+[2020-06-10 11:16:35,229 INFO] Using model #100	1 inputs
+               	translation time: 0.484764
+[2020-06-10 11:16:35,230 INFO] Translation Results: 1
+[2020-06-10 11:16:35,230 INFO] 219.75.24.172 - - [10/Jun/2020 11:16:35] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:16:42,054 INFO] Running translation using 100
+[2020-06-10 11:16:42,524 INFO] Using model #100	1 inputs
+               	translation time: 0.469119
+[2020-06-10 11:16:42,524 INFO] Translation Results: 1
+[2020-06-10 11:16:42,524 INFO] 219.75.24.172 - - [10/Jun/2020 11:16:42] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:17:12,525 INFO] Timeout: sending model 100 to CPU
+[2020-06-10 11:17:37,536 INFO] Running translation using 100
+[2020-06-10 11:17:38,396 INFO] Using model #100	1 inputs
+               	translation time: 0.860067
+[2020-06-10 11:17:38,396 INFO] Translation Results: 1
+[2020-06-10 11:17:38,397 INFO] 219.75.24.172 - - [10/Jun/2020 11:17:38] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:18:08,398 INFO] Timeout: sending model 100 to CPU
+[2020-06-10 11:22:29,952 INFO] Running translation using 100
+[2020-06-10 11:22:30,650 INFO] Using model #100	1 inputs
+               	translation time: 0.698517
+[2020-06-10 11:22:30,651 INFO] Translation Results: 1
+[2020-06-10 11:22:30,651 INFO] 219.75.24.172 - - [10/Jun/2020 11:22:30] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:22:37,826 INFO] Running translation using 100
+[2020-06-10 11:22:38,519 INFO] Using model #100	1 inputs
+               	translation time: 0.693368
+[2020-06-10 11:22:38,520 INFO] Translation Results: 1
+[2020-06-10 11:22:38,520 INFO] 219.75.24.172 - - [10/Jun/2020 11:22:38] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:22:49,894 INFO] Running translation using 100
+[2020-06-10 11:22:50,384 INFO] Using model #100	1 inputs
+               	translation time: 0.489707
+[2020-06-10 11:22:50,384 INFO] Translation Results: 1
+[2020-06-10 11:22:50,385 INFO] 219.75.24.172 - - [10/Jun/2020 11:22:50] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:23:14,144 INFO] Running translation using 100
+[2020-06-10 11:23:14,895 INFO] Using model #100	1 inputs
+               	translation time: 0.750506
+[2020-06-10 11:23:14,895 INFO] Translation Results: 1
+[2020-06-10 11:23:14,895 INFO] 219.75.24.172 - - [10/Jun/2020 11:23:14] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:23:44,896 INFO] Timeout: sending model 100 to CPU
+[2020-06-10 11:23:49,314 INFO] Running translation using 100
+[2020-06-10 11:23:50,729 INFO] Using model #100	1 inputs
+               	translation time: 1.414904
+[2020-06-10 11:23:50,730 INFO] Translation Results: 1
+[2020-06-10 11:23:50,730 INFO] 219.75.24.172 - - [10/Jun/2020 11:23:50] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:24:20,731 INFO] Timeout: sending model 100 to CPU
+[2020-06-10 11:24:35,611 INFO] Running translation using 100
+[2020-06-10 11:24:36,231 INFO] Using model #100	1 inputs
+               	translation time: 0.620263
+[2020-06-10 11:24:36,232 INFO] Translation Results: 1
+[2020-06-10 11:24:36,232 INFO] 219.75.24.172 - - [10/Jun/2020 11:24:36] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:24:46,505 INFO] Running translation using 100
+[2020-06-10 11:24:47,193 INFO] Using model #100	1 inputs
+               	translation time: 0.688424
+[2020-06-10 11:24:47,193 INFO] Translation Results: 1
+[2020-06-10 11:24:47,194 INFO] 219.75.24.172 - - [10/Jun/2020 11:24:47] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:25:17,195 INFO] Timeout: sending model 100 to CPU
+[2020-06-10 11:25:51,578 INFO] Running translation using 100
+[2020-06-10 11:25:52,369 INFO] Using model #100	1 inputs
+               	translation time: 0.791207
+[2020-06-10 11:25:52,369 INFO] Translation Results: 1
+[2020-06-10 11:25:52,370 INFO] 219.75.24.172 - - [10/Jun/2020 11:25:52] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:26:02,245 INFO] Running translation using 100
+[2020-06-10 11:26:03,096 INFO] Using model #100	1 inputs
+               	translation time: 0.851181
+[2020-06-10 11:26:03,096 INFO] Translation Results: 1
+[2020-06-10 11:26:03,097 INFO] 219.75.24.172 - - [10/Jun/2020 11:26:03] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:26:08,337 INFO] Running translation using 100
+[2020-06-10 11:26:09,396 INFO] Using model #100	1 inputs
+               	translation time: 1.058921
+[2020-06-10 11:26:09,397 INFO] Translation Results: 1
+[2020-06-10 11:26:09,397 INFO] 219.75.24.172 - - [10/Jun/2020 11:26:09] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:26:27,822 INFO] Running translation using 100
+[2020-06-10 11:26:28,564 INFO] Using model #100	1 inputs
+               	translation time: 0.741516
+[2020-06-10 11:26:28,564 INFO] Translation Results: 1
+[2020-06-10 11:26:28,565 INFO] 219.75.24.172 - - [10/Jun/2020 11:26:28] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:26:47,571 INFO] Running translation using 100
+[2020-06-10 11:26:48,369 INFO] Using model #100	1 inputs
+               	translation time: 0.798042
+[2020-06-10 11:26:48,370 INFO] Translation Results: 1
+[2020-06-10 11:26:48,370 INFO] 219.75.24.172 - - [10/Jun/2020 11:26:48] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:27:18,371 INFO] Timeout: sending model 100 to CPU
+[2020-06-10 11:29:47,177 INFO] Running translation using 100
+[2020-06-10 11:29:47,806 INFO] Using model #100	1 inputs
+               	translation time: 0.629569
+[2020-06-10 11:29:47,807 INFO] Translation Results: 1
+[2020-06-10 11:29:47,807 INFO] 219.75.24.172 - - [10/Jun/2020 11:29:47] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:29:52,816 INFO] Running translation using 100
+[2020-06-10 11:29:53,452 INFO] Using model #100	1 inputs
+               	translation time: 0.635840
+[2020-06-10 11:29:53,452 INFO] Translation Results: 1
+[2020-06-10 11:29:53,453 INFO] 219.75.24.172 - - [10/Jun/2020 11:29:53] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:29:57,131 INFO] Running translation using 100
+[2020-06-10 11:29:57,753 INFO] Using model #100	1 inputs
+               	translation time: 0.622350
+[2020-06-10 11:29:57,754 INFO] Translation Results: 1
+[2020-06-10 11:29:57,754 INFO] 219.75.24.172 - - [10/Jun/2020 11:29:57] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:30:10,252 INFO] Running translation using 100
+[2020-06-10 11:30:10,821 INFO] Using model #100	1 inputs
+               	translation time: 0.569006
+[2020-06-10 11:30:10,821 INFO] Translation Results: 1
+[2020-06-10 11:30:10,822 INFO] 219.75.24.172 - - [10/Jun/2020 11:30:10] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:30:36,796 INFO] Running translation using 100
+[2020-06-10 11:30:37,402 INFO] Using model #100	1 inputs
+               	translation time: 0.605889
+[2020-06-10 11:30:37,402 INFO] Translation Results: 1
+[2020-06-10 11:30:37,403 INFO] 219.75.24.172 - - [10/Jun/2020 11:30:37] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:31:02,578 INFO] Running translation using 100
+[2020-06-10 11:31:03,124 INFO] Using model #100	1 inputs
+               	translation time: 0.546173
+[2020-06-10 11:31:03,125 INFO] Translation Results: 1
+[2020-06-10 11:31:03,125 INFO] 219.75.24.172 - - [10/Jun/2020 11:31:03] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:31:11,129 INFO] Running translation using 100
+[2020-06-10 11:31:11,686 INFO] Using model #100	1 inputs
+               	translation time: 0.556693
+[2020-06-10 11:31:11,686 INFO] Translation Results: 1
+[2020-06-10 11:31:11,686 INFO] 219.75.24.172 - - [10/Jun/2020 11:31:11] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-10 11:31:41,687 INFO] Timeout: sending model 100 to CPU
+[2020-06-10 14:58:38,976 INFO] 34.75.203.111 - - [10/Jun/2020 14:58:38] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-10 15:50:54,696 INFO] 196.52.43.51 - - [10/Jun/2020 15:50:54] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-10 21:56:48,187 ERROR] 83.97.20.21 - - [10/Jun/2020 21:56:48] code 400, message Bad request version ('0.12\x00')
+[2020-06-10 21:56:48,188 INFO] 83.97.20.21 - - [10/Jun/2020 21:56:48] "[35m[1m   ¤ÿSMBr    @              @     PC NETWORK PROGRAM 1.0 MICROSOFT NETWORKS 1.03 MICROSOFT NETWORKS 3.0 LANMAN1.0 LM1.2X002 Samba NT LANMAN 1.0 NT LM 0.12 [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-10 21:56:48,354 INFO] 83.97.20.21 - - [10/Jun/2020 21:56:48] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-10 23:59:42,046 INFO] 209.17.96.18 - - [10/Jun/2020 23:59:42] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-11 02:16:40,103 INFO] 209.17.97.122 - - [11/Jun/2020 02:16:40] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-11 06:42:53,394 INFO] 222.186.61.115 - - [11/Jun/2020 06:42:53] "[33mCONNECT ip.ws.126.net:443 HTTP/1.1[0m" 404 -
+[2020-06-11 06:57:11,834 INFO] 221.13.12.59 - - [11/Jun/2020 06:57:11] "[33mHEAD http://123.125.114.144/ HTTP/1.1[0m" 404 -
+[2020-06-11 07:19:57,137 ERROR] 94.102.51.116 - - [11/Jun/2020 07:19:57] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-11 07:19:57,138 INFO] 94.102.51.116 - - [11/Jun/2020 07:19:57] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-11 07:47:04,576 ERROR] 185.202.1.204 - - [11/Jun/2020 07:47:04] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-11 07:47:04,577 INFO] 185.202.1.204 - - [11/Jun/2020 07:47:04] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-11 08:41:29,351 ERROR] 94.102.51.116 - - [11/Jun/2020 08:41:29] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-11 08:41:29,352 INFO] 94.102.51.116 - - [11/Jun/2020 08:41:29] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-11 12:01:16,752 ERROR] 94.102.51.116 - - [11/Jun/2020 12:01:16] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-11 12:01:16,752 INFO] 94.102.51.116 - - [11/Jun/2020 12:01:16] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-11 14:11:18,535 ERROR] 94.102.51.116 - - [11/Jun/2020 14:11:18] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-11 14:11:18,535 INFO] 94.102.51.116 - - [11/Jun/2020 14:11:18] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-11 16:44:41,194 ERROR] 94.102.51.116 - - [11/Jun/2020 16:44:41] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-11 16:44:41,195 INFO] 94.102.51.116 - - [11/Jun/2020 16:44:41] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-11 19:38:29,110 ERROR] 94.102.51.116 - - [11/Jun/2020 19:38:29] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-11 19:38:29,110 INFO] 94.102.51.116 - - [11/Jun/2020 19:38:29] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-12 00:53:24,290 ERROR] 183.136.225.44 - - [12/Jun/2020 00:53:24] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03®È\x15')
+[2020-06-12 00:53:24,291 INFO] 183.136.225.44 - - [12/Jun/2020 00:53:24] "[35m[1m  ü®ÈTàWÁU%Uõ|øRK|3´(´7Ñ¨Ý  Ú      3 9 :  5 [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-12 01:17:34,735 ERROR] 104.206.128.22 - - [12/Jun/2020 01:17:34] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00\'"à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-12 01:17:34,736 INFO] 104.206.128.22 - - [12/Jun/2020 01:17:34] "[35m[1m  '"à     Cookie: mstshash=uTbmZbTrz[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-12 01:17:34,801 ERROR] 104.206.128.22 - - [12/Jun/2020 01:17:34] code 400, message Bad HTTP/0.9 request type ("\x03\x00\x00,'à\x00\x00\x00\x00\x00Cookie:")
+[2020-06-12 01:17:34,802 INFO] 104.206.128.22 - - [12/Jun/2020 01:17:34] "[35m[1m  ,'à     Cookie: mstshash=xaPRhJ[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-12 01:17:34,867 ERROR] 104.206.128.22 - - [12/Jun/2020 01:17:34] code 400, message Bad HTTP/0.9 request type ("\x03\x00\x00,'à\x00\x00\x00\x00\x00Cookie:")
+[2020-06-12 01:17:34,867 INFO] 104.206.128.22 - - [12/Jun/2020 01:17:34] "[35m[1m  ,'à     Cookie: mstshash=bbUjzQ[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-12 02:28:12,672 INFO] 209.17.97.106 - - [12/Jun/2020 02:28:12] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-12 03:18:29,661 INFO] 209.17.96.250 - - [12/Jun/2020 03:18:29] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-12 04:56:32,810 ERROR] 83.97.20.21 - - [12/Jun/2020 04:56:32] code 400, message Bad request version ('0.12\x00')
+[2020-06-12 04:56:32,811 INFO] 83.97.20.21 - - [12/Jun/2020 04:56:32] "[35m[1m   ¤ÿSMBr    @              @     PC NETWORK PROGRAM 1.0 MICROSOFT NETWORKS 1.03 MICROSOFT NETWORKS 3.0 LANMAN1.0 LM1.2X002 Samba NT LANMAN 1.0 NT LM 0.12 [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-12 04:56:32,977 INFO] 83.97.20.21 - - [12/Jun/2020 04:56:32] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-12 13:29:38,732 ERROR] 185.202.2.149 - - [12/Jun/2020 13:29:38] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-12 13:29:38,733 INFO] 185.202.2.149 - - [12/Jun/2020 13:29:38] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-12 15:24:03,181 ERROR] 92.63.194.102 - - [12/Jun/2020 15:24:03] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-12 15:24:03,181 INFO] 92.63.194.102 - - [12/Jun/2020 15:24:03] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-12 15:32:47,636 ERROR] 185.202.1.196 - - [12/Jun/2020 15:32:47] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-12 15:32:47,636 INFO] 185.202.1.196 - - [12/Jun/2020 15:32:47] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-12 20:00:16,664 INFO] 209.17.96.66 - - [12/Jun/2020 20:00:16] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-12 22:13:10,209 INFO] 209.17.96.202 - - [12/Jun/2020 22:13:10] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-13 05:43:18,199 INFO] 92.118.160.17 - - [13/Jun/2020 05:43:18] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-13 10:16:57,182 ERROR] 83.97.20.21 - - [13/Jun/2020 10:16:57] code 400, message Bad request version ('0.12\x00')
+[2020-06-13 10:16:57,182 INFO] 83.97.20.21 - - [13/Jun/2020 10:16:57] "[35m[1m   ¤ÿSMBr    @              @     PC NETWORK PROGRAM 1.0 MICROSOFT NETWORKS 1.03 MICROSOFT NETWORKS 3.0 LANMAN1.0 LM1.2X002 Samba NT LANMAN 1.0 NT LM 0.12 [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-13 10:16:57,350 INFO] 83.97.20.21 - - [13/Jun/2020 10:16:57] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-13 13:00:18,331 INFO] 196.52.43.101 - - [13/Jun/2020 13:00:18] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-13 13:01:04,020 INFO] 172.86.126.233 - - [13/Jun/2020 13:01:04] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-13 18:10:24,559 ERROR] 185.151.242.184 - - [13/Jun/2020 18:10:24] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-13 18:10:24,559 INFO] 185.151.242.184 - - [13/Jun/2020 18:10:24] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-13 19:00:24,854 INFO] 209.17.97.26 - - [13/Jun/2020 19:00:24] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-13 20:46:29,158 INFO] 209.17.96.170 - - [13/Jun/2020 20:46:29] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-13 21:27:48,274 ERROR] 193.169.252.238 - - [13/Jun/2020 21:27:48] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-13 21:27:48,275 INFO] 193.169.252.238 - - [13/Jun/2020 21:27:48] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-13 21:27:48,598 ERROR] 193.169.252.238 - - [13/Jun/2020 21:27:48] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-13 21:27:48,598 INFO] 193.169.252.238 - - [13/Jun/2020 21:27:48] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-13 21:44:26,942 ERROR] 213.217.0.177 - - [13/Jun/2020 21:44:26] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-13 21:44:26,943 INFO] 213.217.0.177 - - [13/Jun/2020 21:44:26] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-14 00:40:49,436 INFO] 80.82.77.227 - - [14/Jun/2020 00:40:49] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-14 05:31:29,012 INFO] 45.148.10.72 - - [14/Jun/2020 05:31:29] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-14 15:35:09,774 ERROR] 83.97.20.21 - - [14/Jun/2020 15:35:09] code 400, message Bad request version ('0.12\x00')
+[2020-06-14 15:35:09,776 INFO] 83.97.20.21 - - [14/Jun/2020 15:35:09] "[35m[1m   ¤ÿSMBr    @              @     PC NETWORK PROGRAM 1.0 MICROSOFT NETWORKS 1.03 MICROSOFT NETWORKS 3.0 LANMAN1.0 LM1.2X002 Samba NT LANMAN 1.0 NT LM 0.12 [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-14 15:35:09,950 INFO] 83.97.20.21 - - [14/Jun/2020 15:35:09] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-14 23:14:48,147 INFO] 71.6.158.166 - - [14/Jun/2020 23:14:48] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-14 23:14:49,973 INFO] 71.6.158.166 - - [14/Jun/2020 23:14:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[2020-06-15 00:15:36,066 INFO] 209.17.97.42 - - [15/Jun/2020 00:15:36] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-15 01:04:54,118 INFO] 209.17.96.194 - - [15/Jun/2020 01:04:54] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-15 02:34:51,589 ERROR] 223.71.167.163 - - [15/Jun/2020 02:34:51] code 400, message Bad request version ('0Fè\x00\x00Ú\x00\x05\x00\x04\x00\x02\x00\x01\x00\x16\x003\x009\x00:\x00\x18\x005\x00')
+[2020-06-15 02:34:51,590 INFO] 223.71.167.163 - - [15/Jun/2020 02:34:51] "[35m[1m  ü?íºU&Dè><ß<ÓÞHK*WGGgñ0Fè  Ú      3 9 :  5 [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-15 18:11:55,051 INFO] 209.17.96.74 - - [15/Jun/2020 18:11:55] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-15 19:36:58,066 INFO] 209.17.96.106 - - [15/Jun/2020 19:36:58] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-15 22:07:00,927 ERROR] 83.97.20.21 - - [15/Jun/2020 22:07:00] code 400, message Bad request version ('0.12\x00')
+[2020-06-15 22:07:00,929 INFO] 83.97.20.21 - - [15/Jun/2020 22:07:00] "[35m[1m   ¤ÿSMBr    @              @     PC NETWORK PROGRAM 1.0 MICROSOFT NETWORKS 1.03 MICROSOFT NETWORKS 3.0 LANMAN1.0 LM1.2X002 Samba NT LANMAN 1.0 NT LM 0.12 [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-15 22:07:01,101 INFO] 83.97.20.21 - - [15/Jun/2020 22:07:01] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-15 23:43:40,390 ERROR] 5.188.206.26 - - [15/Jun/2020 23:43:40] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-15 23:43:40,391 INFO] 5.188.206.26 - - [15/Jun/2020 23:43:40] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-16 01:00:48,871 ERROR] 5.188.206.26 - - [16/Jun/2020 01:00:48] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-16 01:00:48,872 INFO] 5.188.206.26 - - [16/Jun/2020 01:00:48] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-16 05:27:46,099 INFO] 13.56.188.123 - - [16/Jun/2020 05:27:46] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-16 06:38:24,712 INFO] 92.118.160.53 - - [16/Jun/2020 06:38:24] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-16 10:08:17,359 INFO] 196.52.43.62 - - [16/Jun/2020 10:08:17] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-16 15:22:44,670 INFO] Running translation using 100
+[2020-06-16 15:22:45,421 INFO] Using model #100	1 inputs
+               	translation time: 0.750105
+[2020-06-16 15:22:45,421 INFO] Translation Results: 1
+[2020-06-16 15:22:45,422 INFO] 219.75.24.172 - - [16/Jun/2020 15:22:45] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-16 15:23:15,424 INFO] Timeout: sending model 100 to CPU
+[2020-06-16 15:25:00,657 INFO] 219.75.24.172 - - [16/Jun/2020 15:25:00] "[31m[1mPOST /translator/translate HTTP/1.1[0m" 400 -
+[2020-06-16 15:25:02,978 INFO] Running translation using 100
+[2020-06-16 15:25:03,536 INFO] Using model #100	1 inputs
+               	translation time: 0.557628
+[2020-06-16 15:25:03,536 INFO] Translation Results: 1
+[2020-06-16 15:25:03,536 INFO] 219.75.24.172 - - [16/Jun/2020 15:25:03] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-16 15:25:33,537 INFO] Timeout: sending model 100 to CPU
+[2020-06-16 16:21:15,028 ERROR] 185.202.1.204 - - [16/Jun/2020 16:21:15] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-16 16:21:15,028 INFO] 185.202.1.204 - - [16/Jun/2020 16:21:15] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-16 21:41:27,976 ERROR] 5.188.206.50 - - [16/Jun/2020 21:41:27] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-16 21:41:27,976 INFO] 5.188.206.50 - - [16/Jun/2020 21:41:27] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-17 01:24:27,588 INFO] 209.17.96.170 - - [17/Jun/2020 01:24:27] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-17 02:12:52,791 ERROR] 62.171.146.194 - - [17/Jun/2020 02:12:52] code 400, message Bad request version ('\x07\x01\x00\x00!5/////./..//////./..//////./../flash/rw/store/user.dat\x02\x00ÿ\x88\x02\x00\x00\x00\x00\x00\x08\x00\x00\x00\x01\x00ÿ\x88\x02\x00\x02\x00\x00\x00\x02\x00\x00\x00')
+[2020-06-17 02:12:52,792 INFO] 62.171.146.194 - - [17/Jun/2020 02:12:52] "[35m[1mh fM2 ÿ ÿ	 ÿ	  !5/////./..//////./..//////./../flash/rw/store/user.dat ÿ         ÿ       [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-17 03:44:16,497 INFO] 209.17.96.218 - - [17/Jun/2020 03:44:16] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-17 04:37:07,382 ERROR] 83.97.20.21 - - [17/Jun/2020 04:37:07] code 400, message Bad request version ('0.12\x00')
+[2020-06-17 04:37:07,383 INFO] 83.97.20.21 - - [17/Jun/2020 04:37:07] "[35m[1m   ¤ÿSMBr    @              @     PC NETWORK PROGRAM 1.0 MICROSOFT NETWORKS 1.03 MICROSOFT NETWORKS 3.0 LANMAN1.0 LM1.2X002 Samba NT LANMAN 1.0 NT LM 0.12 [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-17 04:37:07,552 INFO] 83.97.20.21 - - [17/Jun/2020 04:37:07] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-17 11:15:52,247 INFO] 192.35.169.48 - - [17/Jun/2020 11:15:52] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-17 18:34:55,168 INFO] 209.17.96.90 - - [17/Jun/2020 18:34:55] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-17 21:03:45,209 INFO] 80.82.77.33 - - [17/Jun/2020 21:03:45] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-17 21:03:45,720 INFO] 80.82.77.33 - - [17/Jun/2020 21:03:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[2020-06-17 21:11:46,767 INFO] 104.199.36.222 - - [17/Jun/2020 21:11:46] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-17 23:51:21,621 ERROR] 5.188.206.50 - - [17/Jun/2020 23:51:21] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-17 23:51:21,621 INFO] 5.188.206.50 - - [17/Jun/2020 23:51:21] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-18 02:48:03,460 INFO] 209.17.96.42 - - [18/Jun/2020 02:48:03] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-18 05:32:39,865 ERROR] 167.99.232.90 - - [18/Jun/2020 05:32:39] code 400, message Bad request version ('À\x14À')
+[2020-06-18 05:32:39,866 INFO] 167.99.232.90 - - [18/Jun/2020 05:32:39] "[35m[1m î  êña)qsoCoññFíÂÃ$ýx¤p@yÙòJÎ Â?¥d£:4böiêÖg¼8s=BÅs¢¦¶è,øæTr &À/À0À+À,Ì¨Ì©ÀÀ	ÀÀ[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-18 05:33:04,041 ERROR] 185.202.1.196 - - [18/Jun/2020 05:33:04] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-18 05:33:04,041 INFO] 185.202.1.196 - - [18/Jun/2020 05:33:04] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-18 05:45:34,082 ERROR] 167.99.232.90 - - [18/Jun/2020 05:45:34] code 400, message Bad request version ('À\x14À')
+[2020-06-18 05:45:34,082 INFO] 167.99.232.90 - - [18/Jun/2020 05:45:34] "[35m[1m î  êªÎ> yõçVçõUqmeöDwK8Ûm^úü XQÓÈ\í]/øaG´,>ÁÛí`uNº·¹Hþä &À/À0À+À,Ì¨Ì©ÀÀ	ÀÀ[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-18 10:11:44,922 ERROR] 83.97.20.21 - - [18/Jun/2020 10:11:44] code 400, message Bad request version ('0.12\x00')
+[2020-06-18 10:11:44,922 INFO] 83.97.20.21 - - [18/Jun/2020 10:11:44] "[35m[1m   ¤ÿSMBr    @              @     PC NETWORK PROGRAM 1.0 MICROSOFT NETWORKS 1.03 MICROSOFT NETWORKS 3.0 LANMAN1.0 LM1.2X002 Samba NT LANMAN 1.0 NT LM 0.12 [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-18 10:11:45,092 INFO] 83.97.20.21 - - [18/Jun/2020 10:11:45] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-18 22:06:35,242 INFO] 209.17.96.18 - - [18/Jun/2020 22:06:35] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-19 02:32:10,971 INFO] 209.17.96.42 - - [19/Jun/2020 02:32:10] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-19 04:45:27,673 INFO] 92.118.161.37 - - [19/Jun/2020 04:45:27] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-19 09:37:51,156 INFO] 196.52.43.96 - - [19/Jun/2020 09:37:51] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-19 17:04:50,800 ERROR] 83.97.20.21 - - [19/Jun/2020 17:04:50] code 400, message Bad request version ('0.12\x00')
+[2020-06-19 17:04:50,801 INFO] 83.97.20.21 - - [19/Jun/2020 17:04:50] "[35m[1m   ¤ÿSMBr    @              @     PC NETWORK PROGRAM 1.0 MICROSOFT NETWORKS 1.03 MICROSOFT NETWORKS 3.0 LANMAN1.0 LM1.2X002 Samba NT LANMAN 1.0 NT LM 0.12 [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-19 17:04:50,971 INFO] 83.97.20.21 - - [19/Jun/2020 17:04:50] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-19 19:18:12,707 ERROR] 185.153.196.243 - - [19/Jun/2020 19:18:12] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-19 19:18:12,707 INFO] 185.153.196.243 - - [19/Jun/2020 19:18:12] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-19 19:25:31,130 ERROR] 185.153.196.243 - - [19/Jun/2020 19:25:31] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-19 19:25:31,131 INFO] 185.153.196.243 - - [19/Jun/2020 19:25:31] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-19 20:22:06,336 INFO] 209.17.96.170 - - [19/Jun/2020 20:22:06] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-20 01:32:08,175 ERROR] 41.76.46.228 - - [20/Jun/2020 01:32:08] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00*%à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-20 01:32:08,176 INFO] 41.76.46.228 - - [20/Jun/2020 01:32:08] "[35m[1m  *%à     Cookie: mstshash=Test[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-20 01:32:08,759 ERROR] 41.76.46.228 - - [20/Jun/2020 01:32:08] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00*%à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-20 01:32:08,759 INFO] 41.76.46.228 - - [20/Jun/2020 01:32:08] "[35m[1m  *%à     Cookie: mstshash=Test[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-20 03:46:45,684 ERROR] 80.82.65.74 - - [20/Jun/2020 03:46:45] code 400, message Bad request syntax ('\x04\x01\x00\x19h/\x05!\x00')
+[2020-06-20 03:46:45,685 INFO] 80.82.65.74 - - [20/Jun/2020 03:46:45] "[35m[1m h/! [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-20 03:46:45,839 INFO] 80.82.65.74 - - [20/Jun/2020 03:46:45] "[33mCONNECT hotmail-com.olc.protection.outlook.com:25 HTTP/1.1[0m" 404 -
+[2020-06-20 03:50:29,994 INFO] 209.17.96.106 - - [20/Jun/2020 03:50:29] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-20 04:42:02,067 ERROR] 91.241.19.67 - - [20/Jun/2020 04:42:02] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-20 04:42:02,068 INFO] 91.241.19.67 - - [20/Jun/2020 04:42:02] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-20 21:01:21,876 ERROR] 5.188.206.26 - - [20/Jun/2020 21:01:21] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-20 21:01:21,877 INFO] 5.188.206.26 - - [20/Jun/2020 21:01:21] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-20 21:13:00,842 INFO] 209.17.96.130 - - [20/Jun/2020 21:13:00] "[33mGET / HTTP/1.0[0m" 404 -
+[2020-06-20 21:44:09,865 INFO] 209.17.97.34 - - [20/Jun/2020 21:44:09] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-20 22:13:49,518 ERROR] 5.188.206.26 - - [20/Jun/2020 22:13:49] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-20 22:13:49,518 INFO] 5.188.206.26 - - [20/Jun/2020 22:13:49] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-21 00:39:55,014 ERROR] 83.97.20.21 - - [21/Jun/2020 00:39:55] code 400, message Bad request version ('0.12\x00')
+[2020-06-21 00:39:55,014 INFO] 83.97.20.21 - - [21/Jun/2020 00:39:55] "[35m[1m   ¤ÿSMBr    @              @     PC NETWORK PROGRAM 1.0 MICROSOFT NETWORKS 1.03 MICROSOFT NETWORKS 3.0 LANMAN1.0 LM1.2X002 Samba NT LANMAN 1.0 NT LM 0.12 [0m" HTTPStatus.BAD_REQUEST -
+[2020-06-21 00:39:55,184 INFO] 83.97.20.21 - - [21/Jun/2020 00:39:55] "[33mGET / HTTP/1.1[0m" 404 -
+[2020-06-21 03:42:37,651 ERROR] 193.27.228.239 - - [21/Jun/2020 03:42:37] code 400, message Bad HTTP/0.9 request type ('\x03\x00\x00/*à\x00\x00\x00\x00\x00Cookie:')
+[2020-06-21 03:42:37,653 INFO] 193.27.228.239 - - [21/Jun/2020 03:42:37] "[35m[1m  /*à     Cookie: mstshash=Administr[0m" HTTPStatus.BAD_REQUEST -
+[2020-06-21 10:11:56,106 INFO] Running translation using 100
+[2020-06-21 10:11:56,868 INFO] Using model #100	1 inputs
+               	translation time: 0.761498
+[2020-06-21 10:11:56,868 INFO] Translation Results: 1
+[2020-06-21 10:11:56,871 INFO] 111.65.47.34 - - [21/Jun/2020 10:11:56] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-21 10:12:26,873 INFO] Timeout: sending model 100 to CPU
+[2020-06-21 10:32:59,067 INFO] 111.65.47.34 - - [21/Jun/2020 10:32:59] "[37mOPTIONS /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-21 10:33:03,276 INFO] 111.65.47.34 - - [21/Jun/2020 10:33:03] "[37mOPTIONS /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-21 11:11:13,372 INFO] 219.75.24.172 - - [21/Jun/2020 11:11:13] "[37mOPTIONS /translator/translate HTTP/1.1[0m" 200 -

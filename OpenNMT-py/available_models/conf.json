@@ -1,0 +1,16 @@
+{
+    "models_root": "./available_models",
+    "models": [
+        {
+            "id": 100,
+            "model": "standard_32000_brnn_seed-1_step_84075_epoch_25.pt",
+            "timeout": 30,
+            "on_timeout": "to_cpu",
+            "load": true,
+            "opt": {
+                "gpu": -5,
+                "beam_size": 5
+            }
+        }
+    ]
+}

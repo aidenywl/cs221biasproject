@@ -637,3 +637,25 @@ Pre-loading model 100
 [2020-06-21 10:32:59,067 INFO] 111.65.47.34 - - [21/Jun/2020 10:32:59] "[37mOPTIONS /translator/translate HTTP/1.1[0m" 200 -
 [2020-06-21 10:33:03,276 INFO] 111.65.47.34 - - [21/Jun/2020 10:33:03] "[37mOPTIONS /translator/translate HTTP/1.1[0m" 200 -
 [2020-06-21 11:11:13,372 INFO] 219.75.24.172 - - [21/Jun/2020 11:11:13] "[37mOPTIONS /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-21 11:29:09,392 INFO] Loading model 100
+Pre-loading model 100
+ * Serving Flask app "onmt.bin.server" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+[2020-06-21 11:29:15,198 INFO]  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+[2020-06-21 11:29:18,324 INFO] Running translation using 100
+/opt/conda/conda-bld/pytorch_1587428190859/work/aten/src/ATen/native/BinaryOps.cpp:66: UserWarning: Integer division of tensors using div or / is deprecated, and in a future release div will perform true division as in Python 3. Use true_divide or floor_divide (// in Python) instead.
+[2020-06-21 11:29:19,575 INFO] Using model #100	1 inputs
+               	translation time: 1.250640
+[2020-06-21 11:29:19,575 INFO] Translation Results: 1
+[2020-06-21 11:29:19,577 INFO] 219.75.24.172 - - [21/Jun/2020 11:29:19] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-21 11:29:26,366 INFO] Running translation using 100
+[2020-06-21 11:29:26,880 INFO] Using model #100	1 inputs
+               	translation time: 0.513220
+[2020-06-21 11:29:26,880 INFO] Translation Results: 1
+[2020-06-21 11:29:26,881 INFO] 219.75.24.172 - - [21/Jun/2020 11:29:26] "[37mPOST /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-21 11:29:31,388 INFO] 219.75.24.172 - - [21/Jun/2020 11:29:31] "[37mOPTIONS /translator/translate HTTP/1.1[0m" 200 -
+[2020-06-21 11:29:56,881 INFO] Timeout: sending model 100 to CPU
+[2020-06-21 11:32:24,450 INFO] 219.75.24.172 - - [21/Jun/2020 11:32:24] "[37mOPTIONS /translator/translate HTTP/1.1[0m" 200 -

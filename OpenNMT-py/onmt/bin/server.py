@@ -2,7 +2,7 @@
 import configargparse
 
 from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from onmt.translate import TranslationServer, ServerModelError
 
 STATUS_OK = "ok"
@@ -20,7 +20,8 @@ def start(config_file,
         return newroute
 
     app = Flask(__name__)
-    CORS(app)
+    CORS(app, support_credentials=True)
+
     app.route = prefix_route(app.route, url_root)
     translation_server = TranslationServer()
     translation_server.start(config_file)
@@ -73,6 +74,7 @@ def start(config_file,
         return jsonify(out)
 
     @app.route('/translate', methods=['POST'])
+    @cross_origin(supports_credentials=True)
     def translate():
         inputs = request.get_json(force=True)
         out = {}

@@ -24,7 +24,7 @@ export PORT=5000
 export URL_ROOT="/translator"
 export CONFIG="./available_models/conf.json"
 // Nohup is used to run in the background and ignore the hangup signal
-nohup python server.py --ip $IP --port $PORT --url_root $URL_ROOT -- config $CONFIG &
+nohup python server.py --ip $IP --port $PORT --url_root $URL_ROOT --config $CONFIG &
 ```
 
 

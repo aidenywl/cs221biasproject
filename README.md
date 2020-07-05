@@ -3,6 +3,7 @@
 Stanford University CS221 Introduction to Artificial Intelligence p-final.
 
 Out of all the models we have trained, the OpenNMT model trained with:
+
 - OpenNMT's standard white space and punctuation tokenizer
 - A vocabulary size of 32000
 - A seed of -1
@@ -12,12 +13,38 @@ Achieved the best accuracy of 32.70% on our test set.
 
 The OpenNMT mode can be downloaded here: https://drive.google.com/file/d/1Stl_TqsTHfua2Fey0lx18vmJfdpbpzIN/view?usp=sharing
 
-# Setting up the server
+## Test API Link
+
+A public production server has been set up with an API that can be accessed via a `POST` request to: `https://www.proximahand.com/translate`.
+
+The server has been set up with `gunicorn` and `nginx` with help from these guides:
+
+1. [Serving Flask Applications with Gunicorn and Nginx](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04)
+2. [Making our requests HTTPS](https://certbot.eff.org/lets-encrypt/debianbuster-nginx)
+
+To call the API, it expects a JSON array like such:
+
+```
+[{
+  "src": "books are to manking what memory is to the individual",
+  "id": 100
+}, {
+    "src": "Schnabel did the fantastic reproductions of Basquiat's work",
+    "id": 100
+}
+.
+.
+.]
+```
+
+## Setting up the server in development
+
 The OpenNMT flask server is set up and extended with CORS to allow it to be used like an API by any host.
 
 The server and model configuration is in `OpenNMT-py/available_models/conf.json`
 
 To start the server, simply run
+
 ```
 export IP="0.0.0.0"
 export PORT=5000
@@ -26,7 +53,6 @@ export CONFIG="./available_models/conf.json"
 // Nohup is used to run in the background and ignore the hangup signal
 nohup python server.py --ip $IP --port $PORT --url_root $URL_ROOT --config $CONFIG &
 ```
-
 
 # Preprocessing Step
 

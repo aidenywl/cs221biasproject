@@ -9,7 +9,7 @@ cryptography==3.2
 distro-info==0.21
 entrypoints==0.3
 Flask==1.1.2
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 future==0.18.2
 google-auth==1.18.0
 google-auth-oauthlib==0.4.1

@@ -9,7 +9,7 @@ Out of all the models we have trained, the OpenNMT model trained with:
 - A seed of -1
 - At 25 epochs
 
-Achieved the best accuracy of 32.70% on our test set.
+The best model we trained achieved a BLEU score of 89.87% on our test dataset.
 
 The OpenNMT mode can be downloaded here: https://drive.google.com/file/d/1Stl_TqsTHfua2Fey0lx18vmJfdpbpzIN/view?usp=sharing
 

@@ -13,14 +13,13 @@ The best model we trained achieved a BLEU score of 89.87% on our test dataset.
 
 The OpenNMT mode can be downloaded here: https://drive.google.com/file/d/1Stl_TqsTHfua2Fey0lx18vmJfdpbpzIN/view?usp=sharing
 
+## Setting up the Translation API
+A Dockerfile has been set up in this repository. Use that and deploy to Google Cloud Run.
+
 ## Test API Link
 
-A public production server has been set up with an API that can be accessed via a `POST` request to: `https://www.proximahand.com/translate`.
+A public production server has been set up with an API that can be accessed via a `POST` request to: `https://translate-v1-okehwkqpmq-ue.a.run.app/translate`.
 
-The server has been set up with `gunicorn` and `nginx` with help from these guides:
-
-1. [Serving Flask Applications with Gunicorn and Nginx](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04)
-2. [Making our requests HTTPS](https://certbot.eff.org/lets-encrypt/debianbuster-nginx)
 
 To call the API, it expects a JSON array like such:
 
@@ -37,7 +36,12 @@ To call the API, it expects a JSON array like such:
 .]
 ```
 
-## Setting up the server in development
+## Deprecated way of setting up the server (manual)
+
+The server has been set up with `gunicorn` and `nginx` with help from these guides:
+
+1. [Serving Flask Applications with Gunicorn and Nginx](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04)
+2. [Making our requests HTTPS](https://certbot.eff.org/lets-encrypt/debianbuster-nginx)
 
 The OpenNMT flask server is set up and extended with CORS to allow it to be used like an API by any host.
 
